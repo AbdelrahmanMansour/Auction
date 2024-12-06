@@ -18,6 +18,8 @@ public class Item {
 
     private String itemName;
 
+    private Long sellerIdentification;
+
     private String itemDescription;
 
     private String Category;

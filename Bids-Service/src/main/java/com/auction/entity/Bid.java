@@ -20,9 +20,9 @@ public class Bid {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private long auctionId;
+    private long auctionIdentifier;
 
-    private long bidderId;
+    private long bidderIdentifier;
 
     private double amount;
 

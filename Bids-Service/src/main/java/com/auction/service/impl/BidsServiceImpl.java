@@ -43,10 +43,10 @@ public class BidsServiceImpl implements BidsService {
     public Optional<BidResponse> updateBid(long bidId, BidRequest bidRequest) {
         Bid updatedAuction = bidsRepository.findById(bidId)
                 .map(bid -> {
-                    bid.setAuctionId(bidRequest.getAuctionId());
+                    bid.setAuctionIdentifier(bidRequest .getAuctionIdentifier());
                     bid.setBidTime(bidRequest.getBidTime());
                     bid.setAmount(bidRequest.getAmount());
-                    bid.setBidderId(bidRequest.getBidderId());
+                    bid.setBidderIdentifier(bidRequest.getBidderIdentifier());
                     return bidsRepository.save(bid);
                 }).orElseThrow(BidNotFoundException.throwBidNotFoundException(bidId));
         return Optional.of(modelMapper.map(updatedAuction, BidResponse.class));

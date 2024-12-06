@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BidResponse {
 
-    private long auctionId;
+    private long auctionIdentifier;
 
-    private long bidderId;
+    private long bidderIdentifier;
 
     private double amount;
 

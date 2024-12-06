@@ -1,0 +1,64 @@
+BidMaster:
+Abdelrahman Hassan Awadallah
+617330
+
+Problem Statement:
+
+An online auction platform, BidMaster, is required to connect buyers and sellers in a digital marketplace
+where users can bid on a wide variety of items, from collectibles to electronics.
+The system must enable sellers to list items for auction, providing details such as item description, starting bid price, bidding deadline, and any reserve price.
+Buyers can browse active auctions, view item details, and place bids, with the system notifying them in real-time if they have been outbid.
+
+
+Requirement Analysis:
+
+Functional Requirements
+
+User Management:
+Secure user registration and login for buyers and sellers.
+
+Item Listing:
+Sellers can create and manage auction listings with:
+Item description.
+Starting bid price.
+Auction deadline.
+reserve price.
+
+Auction Browsing:
+Buyers can browse active auctions.
+Buyers can view detailed information about each listed item.
+
+Bidding Functionality:
+Buyers can place bids on active auctions.
+
+
+Non-Functional Requirements
+
+Performance:
+The system must handle a large number of concurrent users and auctions without performance degradation.
+
+Scalability:
+The platform must scale to accommodate growth in users, auctions, and bids.
+
+
+Maintainability:
+Design a microservice system architecture to simplify updates and feature enhancements.
+
+
+Software Modeling
+Class Diagram
+use case Diagram
+
+Architecture:
+
+
+The BidMaster platform employs a well-defined microservices architecture to ensure scalability, maintainability, and flexibility.
+Each core functionality is encapsulated within its service, such as Auction Service, Auth Service, Items Service and Bids Service.
+These services communicate through lightweight APIs, enabling seamless integration and clear separation of concerns.
+
+The architecture allows individual services to be developed, deployed, and scaled independently, optimizing resource utilization and simplifying maintenance.
+
+For example, the Auth Service handles user authentication and authorization, ensuring security,
+while the Auction Service manages auction lifecycles without dependencies on other services' internal logic.
+This modular design not only enhances system reliability but also supports future enhancements, such as adding new features or integrating third-party systems,
+with minimal disruption to existing functionality.

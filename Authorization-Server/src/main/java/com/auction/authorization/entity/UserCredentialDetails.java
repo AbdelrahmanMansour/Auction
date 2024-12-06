@@ -20,6 +20,8 @@ public class UserCredentialDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String role;
+
     private String firstName;
 
     private String lastName;

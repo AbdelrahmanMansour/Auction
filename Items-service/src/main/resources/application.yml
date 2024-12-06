@@ -6,7 +6,7 @@ spring:
     name: items-service
 
   datasource:
-    url: jdbc:postgresql://db_items:5432/Items
+    url: jdbc:postgresql://localhost:5432/Items
     username: postgres
     password: A123@123h
     driver-class-name: org.postgresql.Driver
@@ -25,4 +25,4 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone : http://dicovery-service:8761/eureka/
+      defaultZone : http://localhost:8761/eureka/

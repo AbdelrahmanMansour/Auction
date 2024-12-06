@@ -2,7 +2,7 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: jdbc:postgresql://db_auth:5432/UserMgm
+    url: jdbc:postgresql://localhost:5432/UserMgm
     username: postgres
     password: A123@123h
     driver-class-name: org.postgresql.Driver
@@ -21,7 +21,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://dicovery-service:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
 server:
   port: 9898

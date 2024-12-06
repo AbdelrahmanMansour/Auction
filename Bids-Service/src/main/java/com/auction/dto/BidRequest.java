@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class BidRequest {
 
-    private long auctionId;
+    private long auctionIdentifier;
 
-    private long bidderId;
+    private long bidderIdentifier;
 
     private double amount;
 
