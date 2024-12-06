@@ -1,0 +1,28 @@
+server:
+  port: 8089
+
+spring:
+  application:
+    name: items-service
+
+  datasource:
+    url: jdbc:postgresql://db_items:5432/Items
+    username: postgres
+    password: A123@123h
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone : http://dicovery-service:8761/eureka/

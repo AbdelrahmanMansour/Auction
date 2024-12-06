@@ -1,0 +1,44 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auction-service
+          uri: lb://auction-service
+          predicates:
+            - Path=/auction/**
+          filters:
+            - AuthenticationFilter
+
+        - id: items-service
+          uri: lb://items-service
+          predicates:
+            - Path=/items/**
+          filters:
+            - AuthenticationFilter
+
+        - id: bids-service
+          uri: lb://bids-service
+          predicates:
+            - Path=/bid/**
+          filters:
+            - AuthenticationFilter
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+
+
+  application:
+    name: auction-gateway
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone : http://dicovery-service:8761/eureka/
+
+server:
+  port: 8989
+

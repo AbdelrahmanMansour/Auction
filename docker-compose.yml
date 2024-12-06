@@ -1,0 +1,117 @@
+version: '3.8'
+
+services:
+  discovery-service:
+    image: discovery-service
+    container_name: discovery-service
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  auction-gateway:
+    image: auction-gateway
+    container_name: auction-gateway
+    ports:
+      - "8989:8989"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-service
+
+  auth-service:
+    image: auth-service
+    container_name: auth-service
+    ports:
+      - "9898:9898"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-service
+
+  auction-service:
+    image: auction-service
+    container_name: auction-service
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-service
+      - auth-service
+
+  items-service:
+    image: items-service
+    container_name: items-service
+    ports:
+      - "8089:8089"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-service
+      - auth-service
+
+  bids-service:
+    image: bids-service
+    container_name: bids-service
+    ports:
+      - "8088:8088"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    depends_on:
+      - discovery-service
+      - auth-service
+
+  db_auction:
+    image: postgres:15-alpine
+    container_name: db_auction
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: A123@123h
+      POSTGRES_DB: Auction
+    ports:
+      - "5432:5432"
+    volumes:
+      - auction-data:/var/lib/postgresql/data
+
+  db_auth:
+    image: postgres:15-alpine
+    container_name: db_auth
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: A123@123h
+      POSTGRES_DB: UserMgm
+    ports:
+      - "5433:5432"
+    volumes:
+      - auth-data:/var/lib/postgresql/data
+
+  db_items:
+    image: postgres:15-alpine
+    container_name: db_items
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: A123@123h
+      POSTGRES_DB: Items
+    ports:
+      - "5434:5432"
+    volumes:
+      - items-data:/var/lib/postgresql/data
+
+  db_bids:
+    image: postgres:15-alpine
+    container_name: db_bids
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: A123@123h
+      POSTGRES_DB: Bids
+    ports:
+      - "5435:5432"
+    volumes:
+      - bids-data:/var/lib/postgresql/data
+
+volumes:
+  auction-data:
+  auth-data:
+  items-data:
+  bids-data:
